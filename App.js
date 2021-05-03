@@ -1,24 +1,26 @@
+import {Formik} from 'formik';
 import React from 'react';
-import {StatusBar, Text} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import styled from 'styled-components';
 
-const AppBtn = styled.TouchableOpacity`
-  padding: 10px;
+const ButtonContainer = styled.TouchableOpacity`
+  margin: 10px 0;
+  padding: 12px;
   border-radius: 10px;
-  background-color: ${props => props.backgroundColor ?? 'blue'};
+  background-color: ${props => props.backgroundColor ?? '#4b84f3'};
 `;
 
 const ButtonText = styled.Text`
   font-size: 15px;
-  color: ${props => props.textColor};
+  color: ${props => props.textColor ?? '#fff'};
   text-align: center;
 `;
 
-const CustomButton = props => (
+const AppBtn = props => (
   <ButtonContainer
-    onPress={() => alert('Hi!')}
+    onPress={props.onPress}
     backgroundColor={props.backgroundColor}>
-    <ButtonText textColor={props.textColor}>{props.text}</ButtonText>
+    <ButtonText textColor={props.textColor}>{props.title}</ButtonText>
   </ButtonContainer>
 );
 
@@ -86,9 +88,24 @@ export default function App() {
         placeholder="Mobile"
         keyboardType="numeric"
       />
-      <AppBtn onPress={handleBtnClick}>
-        <Text>Submit</Text>
-      </AppBtn>
+
+      <AppBtn onPress={() => alert('Hi!')} title="Click Me" />
+      <AppBtn title="Reset" />
+
+      <Formik
+        initialValues={{email: ''}}
+        onSubmit={values => console.log(values)}>
+        {({handleChange, handleBlur, handleSubmit, values}) => (
+          <View>
+            <AppTextInput
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+            />
+            <AppBtn onPress={handleSubmit} title="Submit" />
+          </View>
+        )}
+      </Formik>
     </Container>
   );
 }
