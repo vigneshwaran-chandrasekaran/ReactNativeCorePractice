@@ -1,28 +1,30 @@
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 import React from 'react';
-import { Text, View } from 'react-native';
+import {Text, View} from 'react-native';
 import 'react-native-gesture-handler';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+
+// https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
+// https://github.com/jmkitavi/formik-example/blob/master/CustomInput.js
 
 const ButtonContainer = styled.TouchableOpacity`
 	margin: 10px 0;
 	padding: 12px;
 	border-radius: 10px;
-	background-color: ${(props) => props.backgroundColor ?? '#4b84f3'};
+	background-color: ${props => props.backgroundColor ?? '#4b84f3'};
 `;
 
 const ButtonText = styled.Text`
 	font-size: 15px;
-	color: ${(props) => props.textColor ?? '#fff'};
+	color: ${props => props.textColor ?? '#fff'};
 	text-align: center;
 `;
 
-const AppBtn = (props) => (
+const AppBtn = props => (
 	<ButtonContainer
 		onPress={props.onPress}
-		backgroundColor={props.backgroundColor}
-	>
+		backgroundColor={props.backgroundColor}>
 		<ButtonText textColor={props.textColor}>{props.title}</ButtonText>
 	</ButtonContainer>
 );
@@ -99,17 +101,10 @@ const SampleForm = () => {
 			<AppBtn title="Reset" />
 
 			<Formik
-				initialValues={{ email: '', password: '' }}
+				initialValues={{email: '', password: ''}}
 				validationSchema={validationSchema}
-				onSubmit={handleFormSubmit}
-			>
-				{({
-					handleChange,
-					handleBlur,
-					handleSubmit,
-					values,
-					errors,
-				}) => (
+				onSubmit={handleFormSubmit}>
+				{({handleChange, handleBlur, handleSubmit, values, errors}) => (
 					<View>
 						<AppTextInput
 							onChangeText={handleChange('email')}
