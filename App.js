@@ -3,10 +3,11 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
-import {Button, StatusBar, Text, View} from 'react-native';
+import {Button, StatusBar, View} from 'react-native';
 import 'react-native-gesture-handler';
 import styled from 'styled-components';
 import {SampleForm} from './src/components';
+import {HomeScreen} from './src/screens';
 
 const Container = styled.View`
 	display: flex;
@@ -14,14 +15,6 @@ const Container = styled.View`
 	flex: 1;
 	padding: 20px;
 `;
-
-function HomeScreen() {
-	return (
-		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-			<Text>Home Screen</Text>
-		</View>
-	);
-}
 
 function NotificationsScreen({navigation}) {
 	return (
@@ -51,11 +44,11 @@ export default function App() {
 					/>
 					<Stack.Screen name="Home" component={HomeScreen} />
 				</Stack.Navigator> */}
-				{/* <Tab.Navigator>
+				<Tab.Navigator>
 					<Tab.Screen name="Home" component={HomeScreen} />
 					<Tab.Screen name="Form" component={SampleForm} />
-				</Tab.Navigator> */}
-				<Drawer.Navigator initialRouteName="Notifications">
+				</Tab.Navigator>
+				{/* <Drawer.Navigator initialRouteName="Notifications">
 					<Drawer.Screen
 						name="Notifications"
 						component={NotificationsScreen}
@@ -63,7 +56,7 @@ export default function App() {
 
 					<Drawer.Screen name="Home" component={HomeScreen} />
 					<Drawer.Screen name="Form" component={SampleForm} />
-				</Drawer.Navigator>
+				</Drawer.Navigator> */}
 			</Container>
 		</NavigationContainer>
 	);
