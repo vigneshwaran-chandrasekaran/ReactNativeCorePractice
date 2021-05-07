@@ -5,7 +5,13 @@ import {Picker} from '@react-native-picker/picker';
  */
 import React, {useState} from 'react';
 import {Text, View} from 'react-native';
+import DatePicker from 'react-native-date-picker';
 import DropDownPicker from 'react-native-dropdown-picker';
+/**
+ * This ModalDropdown component is ok component only, don't have any fancy details, it below Picker component
+ * 1.75/5 rating
+ */
+import ModalDropdown from 'react-native-modal-dropdown';
 
 const HomeScreen = () => {
 	const [selectedLanguage, setSelectedLanguage] = useState('js');
@@ -20,6 +26,7 @@ const HomeScreen = () => {
 		{label: 'four', value: 'four'},
 		{label: 'five', value: 'five'},
 	]);
+	const [date, setDate] = useState(new Date());
 
 	return (
 		<View style={{flex: 1}}>
@@ -88,6 +95,26 @@ const HomeScreen = () => {
 					}}
 					mode="BADGE"
 				/>
+				<Text>Modal drop down starts</Text>
+				<ModalDropdown
+					options={['option 1', 'option 2']}
+					isFullWidth={true}
+					style={{
+						backgroundColor: 'pink',
+						padding: 15,
+						marginVertical: 15,
+					}}
+					textStyle={{
+						color: '#fff',
+						fontSize: 18,
+					}}
+					dropdownTextStyle={{
+						color: 'red',
+						fontSize: 18,
+					}}
+				/>
+				<Text>Modal drop down ends</Text>
+				<DatePicker date={date} onDateChange={setDate} />
 			</View>
 		</View>
 	);
