@@ -1,6 +1,6 @@
 import {Formik} from 'formik';
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import 'react-native-gesture-handler';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -96,20 +96,6 @@ const FormScreen = ({navigation}) => {
 
 			<AppBtn onPress={() => alert('Hi!')} title="Click Me" />
 			<AppBtn title="Reset" />
-
-			<Button title="DatePickers"></Button>
-
-			<Text>one and two</Text>
-
-			<Button
-				onPress={() => navigation.navigate('DatePickers')}
-				title="DatePickers"
-			/>
-
-			<Button
-				onPress={() => navigation.navigate('Dropdowns')}
-				title="Dropdowns"
-			/>
 
 			<Formik
 				initialValues={{email: '', password: ''}}
