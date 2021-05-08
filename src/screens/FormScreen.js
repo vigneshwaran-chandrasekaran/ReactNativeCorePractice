@@ -1,7 +1,9 @@
+import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Button, Text, TouchableHighlight, View} from 'react-native';
 import 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 
@@ -48,9 +50,10 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string().required().min(6, 'Too short'),
 });
 
-const FormScreen = ({navigation}) => {
+const FormScreen = () => {
 	const [text, onChangeText] = React.useState(null);
 	const [number, onChangeNumber] = React.useState(null);
+	const navigation = useNavigation();
 
 	function handleBtnClick() {
 		alert('Button clicked wow');
@@ -82,6 +85,41 @@ const FormScreen = ({navigation}) => {
       />
       <Title>Vigneshwaran</Title>
       */}
+
+			<Button
+				onPress={() => navigation.navigate('DatePickers')}
+				title="DatePickers"
+			/>
+			<Button
+				onPress={() => navigation.navigate('Dropdowns')}
+				title="Dropdowns"
+				icon={<Icon name="home" size={15} color="white" />}
+			/>
+			<Button
+				onPress={() => navigation.navigate('DeviceInfo')}
+				title="DeviceInfo"
+				icon={<Icon name="home" size={15} color="white" />}
+			/>
+
+			<TouchableHighlight
+				style={{
+					backgroundColor: 'gold',
+					padding: 20,
+				}}
+				activeOpacity={0.6}
+				underlayColor="#DDDDDD"
+				onPress={() => navigation.navigate('Dropdowns')}>
+				<View
+					style={{
+						flexDirection: 'row',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}>
+					<Icon name="home" size={15} color="#ccc" />
+					<Text> Dropdowns</Text>
+				</View>
+			</TouchableHighlight>
+
 			<AppTextInput
 				onChangeText={onChangeText}
 				value={text}

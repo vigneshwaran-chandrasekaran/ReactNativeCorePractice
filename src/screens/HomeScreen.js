@@ -1,19 +1,21 @@
 import React from 'react';
-import {Button, ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
 	return (
 		<View style={{flex: 1}}>
 			<ScrollView showsVerticalScrollIndicator={false}>
-				<Text>Home Screen</Text>
-				<Button
-					onPress={() => navigation.navigate('DatePickers')}
-					title="DatePickers"
-				/>
-				<Button
-					onPress={() => navigation.navigate('Dropdowns')}
-					title="Dropdowns"
-				/>
+				<Text>Home Screen 12</Text>
+				<View style={{flexDirection: 'row', alignItems: 'center'}}>
+					<MaterialCommunityIcons
+						name="home"
+						color={'#ccc'}
+						size={20}
+					/>
+					<Icon name="ios-person" size={30} color="#4F8EF7" />
+				</View>
 			</ScrollView>
 		</View>
 	);
