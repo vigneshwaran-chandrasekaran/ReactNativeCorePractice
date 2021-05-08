@@ -106,6 +106,11 @@ const FormScreen = ({navigation}) => {
 				title="DatePickers"
 			/>
 
+			<Button
+				onPress={() => navigation.navigate('Dropdowns')}
+				title="Dropdowns"
+			/>
+
 			<Formik
 				initialValues={{email: '', password: ''}}
 				validationSchema={validationSchema}
