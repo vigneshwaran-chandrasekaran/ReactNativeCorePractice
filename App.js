@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import * as React from 'react';
+import React, {useState} from 'react';
 import {StatusBar} from 'react-native';
 import 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -13,7 +13,7 @@ const Container = styled.View`
 	display: flex;
 	justify-content: center;
 	flex: 1;
-	padding: 20px;
+	background-color: orange;
 `;
 
 // function NotificationsScreen({navigation}) {
@@ -31,10 +31,32 @@ const Container = styled.View`
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+const STYLES = ['default', 'dark-content', 'light-content'];
+const TRANSITIONS = ['fade', 'slide', 'none'];
+
 export default function App() {
+	const [hidden, setHidden] = useState(false);
+	const [statusBarStyle, setStatusBarStyle] = useState(STYLES[0]);
+	const [statusBarTransition, setStatusBarTransition] = useState(
+		TRANSITIONS[0],
+	);
+
 	return (
-		<NavigationContainer>
-			<Container style={{marginTop: StatusBar.currentHeight || 0}}>
+		<NavigationContainer
+			style={{margin: 0, padding: 0, flex: 1, backgroundColor: 'pink'}}>
+			<Container
+				style={
+					{
+						// marginTop: StatusBar.currentHeight || 0,
+					}
+				}>
+				<StatusBar
+					animated={true}
+					backgroundColor="#61dafb"
+					barStyle={statusBarStyle}
+					showHideTransition={statusBarTransition}
+					hidden={hidden}
+				/>
 				<Tab.Navigator
 					screenOptions={({route}) => ({
 						tabBarIcon: ({focused, color, size}) => {

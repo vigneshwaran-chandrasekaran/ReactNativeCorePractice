@@ -1,9 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
 import React from 'react';
-import {Button, Text, TouchableHighlight, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 
@@ -66,75 +65,6 @@ const FormScreen = () => {
 
 	return (
 		<View>
-			{/* <Text>Test</Text>
-      <Text>Test</Text>
-      <Text>Test</Text>
-      <Text>Test</Text>
-      <Text>Test</Text>function
-      <Btn onPress={handleBtnClick} title="Learn More" />
-      <Button
-        onPress={handleBtnClick}
-        title="Learn More"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      />
-      <Button
-        onPress={handleBtnClick}
-        title="Learn More"
-        accessibilityLabel="Learn more about this purple button"
-      />
-      <Title>Vigneshwaran</Title>
-      */}
-
-			<Button
-				onPress={() => navigation.navigate('DatePickers')}
-				title="DatePickers"
-			/>
-			<Button
-				onPress={() => navigation.navigate('Dropdowns')}
-				title="Dropdowns"
-				icon={<Icon name="home" size={15} color="white" />}
-			/>
-			<Button
-				onPress={() => navigation.navigate('DeviceInfo')}
-				title="DeviceInfo"
-				icon={<Icon name="home" size={15} color="white" />}
-			/>
-
-			<TouchableHighlight
-				style={{
-					backgroundColor: 'gold',
-					padding: 20,
-				}}
-				activeOpacity={0.6}
-				underlayColor="#DDDDDD"
-				onPress={() => navigation.navigate('Dropdowns')}>
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'center',
-						alignItems: 'center',
-					}}>
-					<Icon name="home" size={15} color="#ccc" />
-					<Text> Dropdowns</Text>
-				</View>
-			</TouchableHighlight>
-
-			<AppTextInput
-				onChangeText={onChangeText}
-				value={text}
-				placeholder="Username"
-			/>
-			<AppTextInput
-				onChangeText={onChangeNumber}
-				value={number}
-				placeholder="Mobile"
-				keyboardType="numeric"
-			/>
-
-			<AppBtn onPress={() => alert('Hi!')} title="Click Me" />
-			<AppBtn title="Reset" />
-
 			<Formik
 				initialValues={{email: '', password: ''}}
 				validationSchema={validationSchema}
@@ -159,6 +89,34 @@ const FormScreen = () => {
 					</View>
 				)}
 			</Formik>
+			<Text>Test</Text>
+			<Button
+				onPress={handleBtnClick}
+				title="Learn More"
+				color="#841584"
+				accessibilityLabel="Learn more about this purple button"
+			/>
+			<Button
+				onPress={handleBtnClick}
+				title="Learn More"
+				accessibilityLabel="Learn more about this purple button"
+			/>
+			<Title>Vigneshwaran</Title>
+
+			<AppTextInput
+				onChangeText={onChangeText}
+				value={text}
+				placeholder="Username"
+			/>
+			<AppTextInput
+				onChangeText={onChangeNumber}
+				value={number}
+				placeholder="Mobile"
+				keyboardType="numeric"
+			/>
+
+			<AppBtn onPress={() => alert('Hi!')} title="Click Me" />
+			<AppBtn title="Reset" />
 		</View>
 	);
 };

@@ -1,7 +1,13 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import 'react-native-gesture-handler';
-import {DatePickers, DeviceInfoScreen, Dropdowns, FormScreen} from '../screens';
+import {
+	DatePickers,
+	DeviceInfoScreen,
+	Dropdowns,
+	FormScreen,
+	ListScreen,
+} from '../screens';
 
 // https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
 // https://github.com/jmkitavi/formik-example/blob/master/CustomInput.js
@@ -10,7 +16,8 @@ const Stack = createStackNavigator();
 
 const SampleForm = () => {
 	return (
-		<Stack.Navigator initialRouteName="FormScreen">
+		<Stack.Navigator initialRouteName="ListScreen">
+			<Stack.Screen name="ListScreen" component={ListScreen} />
 			<Stack.Screen
 				name="FormScreen"
 				component={FormScreen}
