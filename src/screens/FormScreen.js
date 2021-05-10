@@ -1,10 +1,13 @@
-import {useNavigation} from '@react-navigation/native';
-import {Formik} from 'formik';
+import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
 import React from 'react';
-import {Button, View} from 'react-native';
+import { Button, View } from 'react-native';
 import 'react-native-gesture-handler';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+
+// https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
+// https://github.com/jmkitavi/formik-example
 
 const ButtonContainer = styled.TouchableOpacity`
 	margin: 10px 0;
@@ -147,7 +150,6 @@ const FormScreen = () => {
 			/>
 
 			<AppBtn onPress={() => alert('Hi!')} title="Click Me" />
-			<AppBtn title="Reset" />
 		</View>
 	);
 };
