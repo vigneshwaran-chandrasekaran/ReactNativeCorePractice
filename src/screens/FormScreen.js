@@ -1,10 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
-import { Formik } from 'formik';
+import {useNavigation} from '@react-navigation/native';
+import {Field, Formik} from 'formik';
 import React from 'react';
-import { Button, View } from 'react-native';
+import {Button, View} from 'react-native';
 import 'react-native-gesture-handler';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+import {TextInput} from '../components/atoms';
+import CustomInput from '../components/form/CustomInput';
 
 // https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
 // https://github.com/jmkitavi/formik-example
@@ -48,21 +50,13 @@ const Title = styled.Text`
 	padding: 20px;
 `;
 
-const AppTextInput = styled.TextInput`
-	padding: 5px 10px;
-	margin: 5px 0;
-	border: 1px solid #ccc;
-	font-size: 16px;
-	color: black;
-	border-radius: 5px;
-`;
-
 const FormError = styled.Text`
 	color: red;
 	font-size: 12px;
 `;
 
 const validationSchema = Yup.object().shape({
+	fullName: Yup.string().required().min(2, 'Too short'),
 	email: Yup.string().required().email(),
 	password: Yup.string().required().min(6, 'Too short'),
 });
@@ -84,7 +78,7 @@ const FormScreen = () => {
 	return (
 		<View style={{padding: 20}}>
 			<Formik
-				initialValues={{email: '', password: ''}}
+				initialValues={{fullName: '', email: '', password: ''}}
 				validationSchema={validationSchema}
 				onSubmit={handleFormSubmit}>
 				{({
@@ -101,7 +95,13 @@ const FormScreen = () => {
 						{console.log('isValid', isValid)}
 						{console.log('values', values)}
 
-						<AppTextInput
+						<Field
+							component={CustomInput}
+							name="fullName"
+							placeholder="Full Name"
+						/>
+
+						<TextInput
 							name="email"
 							placeholder="Email Address"
 							onChangeText={handleChange('email')}
@@ -112,7 +112,7 @@ const FormScreen = () => {
 						{errors.email && touched.email && (
 							<FormError>Email Error</FormError>
 						)}
-						<AppTextInput
+						<TextInput
 							name="password"
 							placeholder="Password"
 							onChangeText={handleChange('password')}
@@ -124,7 +124,7 @@ const FormScreen = () => {
 							<FormError>Password Error</FormError>
 						)}
 						<AppBtn
-							disabled={!isValid || values.email === ''}
+							// disabled={!isValid || values.email === ''}
 							onPress={handleSubmit}
 							title="Submit"
 						/>
@@ -137,12 +137,12 @@ const FormScreen = () => {
 				color="#841584"
 				accessibilityLabel="Learn more about this purple button"
 			/>
-			<AppTextInput
+			<TextInput
 				onChangeText={onChangeText}
 				value={text}
 				placeholder="Username"
 			/>
-			<AppTextInput
+			<TextInput
 				onChangeText={onChangeNumber}
 				value={number}
 				placeholder="Mobile"

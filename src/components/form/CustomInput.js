@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
+import {TextInput} from '../atoms';
 
 const CustomInput = props => {
 	console.log('CustomInput props', props);
@@ -15,7 +16,7 @@ const CustomInput = props => {
 		<>
 			<TextInput
 				style={[
-					styles.textInput,
+					// styles.textInput,
 					props.multiline && {height: props.numberOfLines * 40},
 					hasError && styles.errorInput,
 				]}
