@@ -7,7 +7,7 @@ import {
 	Dropdowns,
 	FormScreen,
 	ListScreen,
-} from '../screens';
+} from 'screens';
 
 // https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
 // https://github.com/jmkitavi/formik-example/blob/master/CustomInput.js

@@ -1,12 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
+import {TextInput} from 'components/atoms';
+import CustomInput from 'components/form/CustomInput';
 import {Field, Formik} from 'formik';
 import React from 'react';
 import {Button, View} from 'react-native';
 import 'react-native-gesture-handler';
 import styled from 'styled-components';
 import * as Yup from 'yup';
-import {TextInput} from '../components/atoms';
-import CustomInput from '../components/form/CustomInput';
 
 // https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
 // https://github.com/jmkitavi/formik-example

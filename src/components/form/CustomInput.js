@@ -1,6 +1,6 @@
+import {TextInput} from 'components/atoms';
 import React from 'react';
 import {StyleSheet, Text} from 'react-native';
-import {TextInput} from '../atoms';
 
 const CustomInput = props => {
 	console.log('CustomInput props', props);
