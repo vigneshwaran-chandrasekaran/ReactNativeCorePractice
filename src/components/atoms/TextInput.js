@@ -8,4 +8,5 @@ export default styled.TextInput`
 	font-size: 16px;
 	color: black;
 	border-radius: 5px;
+	border-color: ${props => (props.hasError ? 'red' : '#ccc')};
 `;

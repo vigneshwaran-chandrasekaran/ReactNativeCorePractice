@@ -1,9 +1,13 @@
 import {TextInput} from 'components/atoms';
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import styled from 'styled-components';
+
+const FormError = styled.Text`
+	color: red;
+	font-size: 12px;
+`;
 
 const CustomInput = props => {
-	console.log('CustomInput props', props);
 	const {
 		field: {name, onBlur, onChange, value},
 		form: {errors, touched, setFieldTouched},
@@ -15,11 +19,8 @@ const CustomInput = props => {
 	return (
 		<>
 			<TextInput
-				style={[
-					// styles.textInput,
-					props.multiline && {height: props.numberOfLines * 40},
-					hasError && styles.errorInput,
-				]}
+				style={[props.multiline && {height: props.numberOfLines * 40}]}
+				hasError={hasError}
 				value={value}
 				onChangeText={text => onChange(name)(text)}
 				onBlur={() => {
@@ -28,29 +29,9 @@ const CustomInput = props => {
 				}}
 				{...inputProps}
 			/>
-			{hasError && <Text style={styles.errorText}>{errors[name]}</Text>}
+			{hasError && <FormError>{errors[name]}</FormError>}
 		</>
 	);
 };
-
-const styles = StyleSheet.create({
-	textInput: {
-		height: 40,
-		width: '100%',
-		margin: 10,
-		backgroundColor: 'white',
-		borderColor: 'gray',
-		borderWidth: StyleSheet.hairlineWidth,
-		borderRadius: 10,
-		textAlignVertical: 'top',
-	},
-	errorText: {
-		fontSize: 10,
-		color: 'red',
-	},
-	errorInput: {
-		borderColor: 'red',
-	},
-});
 
 export default CustomInput;
