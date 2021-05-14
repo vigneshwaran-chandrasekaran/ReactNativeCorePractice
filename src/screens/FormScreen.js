@@ -1,9 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
-import {TextInput} from 'components/atoms';
 import CustomInput from 'components/form/CustomInput';
 import {Field, Formik} from 'formik';
 import React from 'react';
-import {Button, View} from 'react-native';
+import {View} from 'react-native';
 import 'react-native-gesture-handler';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -43,16 +42,11 @@ const AppBtn = ({
 );
 
 const Title = styled.Text`
-	background-color: red;
-	color: yellow;
-	font-size: 16px;
+	background-color: white;
+	color: blue;
+	font-size: 24px;
 	text-align: center;
-	padding: 20px;
-`;
-
-const FormError = styled.Text`
-	color: red;
-	font-size: 12px;
+	padding: 10px;
 `;
 
 const validationSchema = Yup.object().shape({
@@ -62,13 +56,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const FormScreen = () => {
-	const [text, onChangeText] = React.useState(null);
-	const [number, onChangeNumber] = React.useState(null);
 	const navigation = useNavigation();
-
-	function handleBtnClick() {
-		alert('Button clicked wow');
-	}
 
 	function handleFormSubmit(values) {
 		console.log('handleFormSubmit');
@@ -77,52 +65,30 @@ const FormScreen = () => {
 
 	return (
 		<View style={{padding: 20}}>
+			<Title>Login Form</Title>
 			<Formik
 				initialValues={{fullName: '', email: '', password: ''}}
 				validationSchema={validationSchema}
 				onSubmit={handleFormSubmit}>
-				{({
-					handleChange,
-					handleBlur,
-					handleSubmit,
-					values,
-					errors,
-					touched,
-					isValid,
-				}) => (
+				{({handleSubmit}) => (
 					<View>
-						{console.log('touched', touched)}
-						{console.log('isValid', isValid)}
-						{console.log('values', values)}
-
 						<Field
 							component={CustomInput}
 							name="fullName"
 							placeholder="Full Name"
 						/>
-
-						<TextInput
+						<Field
+							component={CustomInput}
 							name="email"
 							placeholder="Email Address"
-							onChangeText={handleChange('email')}
-							onBlur={handleBlur('email')}
-							value={values.email}
 							keyboardType="email-address"
 						/>
-						{errors.email && touched.email && (
-							<FormError>Email Error</FormError>
-						)}
-						<TextInput
+						<Field
+							component={CustomInput}
 							name="password"
 							placeholder="Password"
-							onChangeText={handleChange('password')}
-							onBlur={handleBlur('password')}
-							value={values.password}
 							secureTextEntry
 						/>
-						{errors.password && touched.password && (
-							<FormError>Password Error</FormError>
-						)}
 						<AppBtn
 							// disabled={!isValid || values.email === ''}
 							onPress={handleSubmit}
@@ -131,25 +97,6 @@ const FormScreen = () => {
 					</View>
 				)}
 			</Formik>
-			<Button
-				onPress={handleBtnClick}
-				title="Learn More"
-				color="#841584"
-				accessibilityLabel="Learn more about this purple button"
-			/>
-			<TextInput
-				onChangeText={onChangeText}
-				value={text}
-				placeholder="Username"
-			/>
-			<TextInput
-				onChangeText={onChangeNumber}
-				value={number}
-				placeholder="Mobile"
-				keyboardType="numeric"
-			/>
-
-			<AppBtn onPress={() => alert('Hi!')} title="Click Me" />
 		</View>
 	);
 };
