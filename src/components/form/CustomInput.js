@@ -2,6 +2,8 @@ import {TextInput} from 'components/atoms';
 import React from 'react';
 import styled from 'styled-components';
 
+// https://github.com/jmkitavi/formik-example/blob/master/CustomInput.js
+
 const FormError = styled.Text`
 	color: red;
 	font-size: 12px;
@@ -19,7 +21,12 @@ const CustomInput = props => {
 	return (
 		<>
 			<TextInput
-				style={[props.multiline && {height: props.numberOfLines * 40}]}
+				style={[
+					props.multiline && {
+						height: props.numberOfLines * 40,
+						textAlignVertical: 'top',
+					},
+				]}
 				hasError={hasError}
 				value={value}
 				onChangeText={text => onChange(name)(text)}

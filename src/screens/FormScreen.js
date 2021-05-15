@@ -49,10 +49,24 @@ const Title = styled.Text`
 	padding: 10px;
 `;
 
+// password: Yup
+// .string()
+// .matches(/\w*[a-z]\w*/,  "Password must have a small letter")
+// .matches(/\w*[A-Z]\w*/,  "Password must have a capital letter")
+// .matches(/\d/, "Password must have a number")
+// .matches(/[!@#$%^&*()\-_"=+{}; :,<.>]/, "Password must have a special character")
+// .min(8, ({ min }) => `Passowrd must be at least ${min} characters`)
+// .required('Password is required'),
+
 const validationSchema = Yup.object().shape({
 	fullName: Yup.string().required().min(2, 'Too short'),
 	email: Yup.string().required().email(),
-	password: Yup.string().required().min(6, 'Too short'),
+	password: Yup.string()
+		.required()
+		.min(6, ({min}) => `Password must be at least ${min} characters`),
+	confirmPassword: Yup.string()
+		.oneOf([Yup.ref('password')], 'Passwords do not match')
+		.required('Confirm password is required'),
 });
 
 const FormScreen = () => {
@@ -67,7 +81,13 @@ const FormScreen = () => {
 		<View style={{padding: 20}}>
 			<Title>Login Form</Title>
 			<Formik
-				initialValues={{fullName: '', email: '', password: ''}}
+				initialValues={{
+					fullName: '',
+					email: '',
+					post: '',
+					password: '',
+					confirmPassword: '',
+				}}
 				validationSchema={validationSchema}
 				onSubmit={handleFormSubmit}>
 				{({handleSubmit}) => (
@@ -85,10 +105,25 @@ const FormScreen = () => {
 						/>
 						<Field
 							component={CustomInput}
+							name="post"
+							placeholder="Write post..."
+							multiline
+							numberOfLines={3}
+						/>
+						<Field
+							component={CustomInput}
 							name="password"
 							placeholder="Password"
 							secureTextEntry
 						/>
+
+						<Field
+							component={CustomInput}
+							name="confirmPassword"
+							placeholder="Confirm Password"
+							secureTextEntry
+						/>
+
 						<AppBtn
 							// disabled={!isValid || values.email === ''}
 							onPress={handleSubmit}
