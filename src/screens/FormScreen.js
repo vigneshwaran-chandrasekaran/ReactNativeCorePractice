@@ -2,8 +2,9 @@ import {useNavigation} from '@react-navigation/native';
 import CustomInput from 'components/form/CustomInput';
 import {Field, Formik} from 'formik';
 import React from 'react';
-import {View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import 'react-native-gesture-handler';
+import {launchCamera} from 'react-native-image-picker';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 
@@ -44,9 +45,10 @@ const AppBtn = ({
 const Title = styled.Text`
 	background-color: white;
 	color: blue;
-	font-size: 24px;
+	font-size: 16px;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
 `;
 
 // password: Yup
@@ -61,12 +63,16 @@ const Title = styled.Text`
 const validationSchema = Yup.object().shape({
 	fullName: Yup.string().required().min(2, 'Too short'),
 	email: Yup.string().required().email(),
+	post: Yup.string()
+		.min(20, ({min, value}) => `${min - value.length} characters to go`)
+		.required('Blog post is required'),
 	password: Yup.string()
 		.required()
 		.min(6, ({min}) => `Password must be at least ${min} characters`),
 	confirmPassword: Yup.string()
 		.oneOf([Yup.ref('password')], 'Passwords do not match')
 		.required('Confirm password is required'),
+	photo: Yup.object().required('Photo is required'),
 });
 
 const FormScreen = () => {
@@ -90,8 +96,43 @@ const FormScreen = () => {
 				}}
 				validationSchema={validationSchema}
 				onSubmit={handleFormSubmit}>
-				{({handleSubmit}) => (
+				{({
+					handleSubmit,
+					values,
+					setFieldValue,
+					setFieldTouched,
+					errors,
+					touched,
+				}) => (
 					<View>
+						<TouchableOpacity
+							style={styles.photoButton}
+							onPress={() => {
+								launchCamera(
+									{title: 'Select Photo'},
+									response => {
+										if (response.uri) {
+											setFieldValue('photo', response);
+										}
+										setFieldTouched('photo', true);
+									},
+								);
+							}}>
+							<Text>Add Image</Text>
+						</TouchableOpacity>
+
+						{values.photo && (
+							<Text>{`...${values.photo.fileName.substr(
+								values.photo.fileName.length - 10,
+							)}`}</Text>
+						)}
+
+						{(errors.photo || touched.photo) && (
+							<Text style={{color: 'red', fontSize: 12}}>
+								{errors.photo}
+							</Text>
+						)}
+
 						<Field
 							component={CustomInput}
 							name="fullName"
@@ -135,5 +176,18 @@ const FormScreen = () => {
 		</View>
 	);
 };
+
+const styles = StyleSheet.create({
+	photoButton: {
+		backgroundColor: '#c4e0ff',
+		elevation: 3,
+		width: '100%',
+		height: 40,
+		borderRadius: 10,
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexDirection: 'row',
+	},
+});
 
 export default FormScreen;
