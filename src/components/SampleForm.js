@@ -7,6 +7,7 @@ import {
 	Dropdowns,
 	FormScreen,
 	ListScreen,
+	NativeBaseScreen,
 } from 'screens';
 
 // https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
@@ -26,6 +27,7 @@ const SampleForm = () => {
 			<Stack.Screen name="Dropdowns" component={Dropdowns} />
 			<Stack.Screen name="DatePickers" component={DatePickers} />
 			<Stack.Screen name="DeviceInfo" component={DeviceInfoScreen} />
+			<Stack.Screen name="NativeBase" component={NativeBaseScreen} />
 		</Stack.Navigator>
 	);
 };

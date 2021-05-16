@@ -48,6 +48,12 @@ const ListScreen = () => {
 				title="FormScreen"
 				icon={<Icon name="home" size={15} color="white" />}
 			/>
+
+			<Button
+				onPress={() => navigation.navigate('NativeBase')}
+				title="Native Base"
+				icon={<Icon name="home" size={15} color="white" />}
+			/>
 		</View>
 	);
 };
