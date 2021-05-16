@@ -1,20 +1,21 @@
 import {
-	Accordion,
-	ActionSheet,
 	Body,
 	Button,
 	Container,
 	Content,
 	Footer,
 	FooterTab,
+	Form,
 	Header,
 	Icon,
 	Left,
+	Picker,
 	Right,
 	Text,
 	Title,
 } from 'native-base';
-import React, {useState} from 'react';
+// import {	Accordion,	ActionSheet} from 'native-base';
+import React, {useEffect, useState} from 'react';
 
 const dataArray = [
 	{title: 'First Element', content: 'Lorem ipsum dolor sit amet'},
@@ -28,10 +29,15 @@ var CANCEL_INDEX = 4;
 
 const NativeBaseScreen = () => {
 	const [state, setState] = useState();
+	const [selected, setSelected] = useState('key1');
 
 	useEffect(() => {
 		console.log('state', state);
 	}, [state]);
+
+	function onValueChange(data) {
+		setSelected(data);
+	}
 
 	return (
 		<Container>
@@ -48,7 +54,25 @@ const NativeBaseScreen = () => {
 			</Header>
 			<Content padder>
 				<Text>This is Content Section 123</Text>
-				<Accordion
+				<Form>
+					<Picker
+						note
+						mode="dropdown"
+						mode="dropdown"
+						iosHeader="Select your SIM"
+						iosIcon={<Icon name="arrow-down" />}
+						style={{width: undefined}}
+						selectedValue={selected}
+						onValueChange={onValueChange}>
+						<Picker.Item label="Wallet" value="key0" />
+						<Picker.Item label="ATM Card" value="key1" />
+						<Picker.Item label="Debit Card" value="key2" />
+						<Picker.Item label="Credit Card" value="key3" />
+						<Picker.Item label="Net Banking" value="key4" />
+					</Picker>
+				</Form>
+
+				{/* <Accordion
 					dataArray={dataArray}
 					expanded={[]}
 					icon="add"
@@ -72,7 +96,7 @@ const NativeBaseScreen = () => {
 						)
 					}>
 					<Text>Actionsheet</Text>
-				</Button>
+				</Button> */}
 			</Content>
 			<Footer>
 				<FooterTab>
