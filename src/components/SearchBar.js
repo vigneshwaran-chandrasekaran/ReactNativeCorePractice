@@ -1,5 +1,5 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {useNavigation} from '@react-navigation/native';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Button, Text, View} from 'react-native';
 import 'react-native-gesture-handler';
@@ -14,7 +14,8 @@ const SearchBarContainer = styled.View`
 `;
 const Drawer = createDrawerNavigator();
 
-function NotificationsScreen({navigation}) {
+function NotificationsScreen() {
+	const navigation = useNavigation();
 	return (
 		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 			<Button
@@ -30,13 +31,14 @@ const SearchBar = () => {
 	const navigation = useNavigation();
 
 	function goToNotifications() {
-		alert('hi');
-		navigation.navigate('Notifications');
+		// navigation.navigate('Notifications');
+		// navigation.navigate('Notifications');
+		navigation.dispatch(DrawerActions.toggleDrawer());
 	}
 
 	return (
 		<View>
-			<Drawer.Navigator>
+			<Drawer.Navigator initialRouteName="Notifications">
 				<Drawer.Screen
 					name="Notifications"
 					component={NotificationsScreen}

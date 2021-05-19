@@ -1,8 +1,9 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {SampleForm} from 'components';
 import React, {useState} from 'react';
-import {StatusBar} from 'react-native';
+import {Button, StatusBar, View} from 'react-native';
 import 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {HomeScreen} from 'screens';
@@ -16,9 +17,30 @@ const Container = styled.View`
 `;
 
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const STYLES = ['default', 'dark-content', 'light-content'];
 const TRANSITIONS = ['fade', 'slide', 'none'];
+
+function HomeDrawer() {
+	const navigation = useNavigation();
+	return (
+		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+			<Button
+				onPress={() => navigation.navigate('Notifications')}
+				title="Go to notifications"
+			/>
+		</View>
+	);
+}
+
+const DrawerRoutes = () => {
+	return (
+		<Drawer.Navigator initialRouteName="Home">
+			<Drawer.Screen name="Home" component={HomeScreen} />
+		</Drawer.Navigator>
+	);
+};
 
 export default function App() {
 	const [hidden, setHidden] = useState(false);
@@ -77,7 +99,7 @@ export default function App() {
 					tabBarOptions={{
 						activeTintColor: '#e91e63',
 					}}>
-					<Tab.Screen name="Home" component={HomeScreen} />
+					<Tab.Screen name="Home" component={DrawerRoutes} />
 					<Tab.Screen name="Contact" component={HomeScreen} />
 					<Tab.Screen name="Form" component={SampleForm} />
 				</Tab.Navigator>
