@@ -6,7 +6,7 @@ import {
 	DrawerItemList,
 } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import {SampleForm} from 'components';
+import {SampleForm, SearchBar} from 'components';
 import React, {useState} from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
 import 'react-native-gesture-handler';
@@ -108,6 +108,12 @@ export function DrawerContent(props) {
 
 					<Drawer.Section style={styles.drawerSection}>
 						<DrawerItem
+							label="Home"
+							onPress={() => {
+								props.navigation.navigate('Home');
+							}}
+						/>
+						<DrawerItem
 							icon={({color, size}) => (
 								<Ionicons
 									name="home-outline"
@@ -208,37 +214,42 @@ export function DrawerContent(props) {
 }
 
 const MainTabScreen = () => (
-	<Tab.Navigator
-		screenOptions={({route}) => ({
-			tabBarIcon: ({focused, color, size}) => {
-				let iconName;
+	<View style={{flex: 1}}>
+		<SearchBar />
+		<Tab.Navigator
+			screenOptions={({route}) => ({
+				tabBarIcon: ({focused, color, size}) => {
+					let iconName;
 
-				if (route.name === 'Home') {
-					iconName = focused
-						? 'ios-information-circle'
-						: 'ios-information-circle-outline';
-				} else if (route.name === 'Form') {
-					iconName = focused
-						? 'ios-information-circle-outline'
-						: 'ios-list';
-				}
+					if (route.name === 'Home') {
+						iconName = focused
+							? 'ios-information-circle'
+							: 'ios-information-circle-outline';
+					} else if (route.name === 'Form') {
+						iconName = focused
+							? 'ios-information-circle-outline'
+							: 'ios-list';
+					}
 
-				// You can return any component that you like here!
-				return <Ionicons name={iconName} size={size} color={color} />;
-			},
-		})}
-		tabBarOptions={{
-			activeTintColor: 'tomato',
-			inactiveTintColor: 'gray',
-		}}
-		initialRouteName="Home"
-		tabBarOptions={{
-			activeTintColor: '#e91e63',
-		}}>
-		<Tab.Screen name="Home" component={HomeScreen} />
-		<Tab.Screen name="Contact" component={ContactScreen} />
-		<Tab.Screen name="Form" component={SampleForm} />
-	</Tab.Navigator>
+					// You can return any component that you like here!
+					return (
+						<Ionicons name={iconName} size={size} color={color} />
+					);
+				},
+			})}
+			tabBarOptions={{
+				activeTintColor: 'tomato',
+				inactiveTintColor: 'gray',
+			}}
+			initialRouteName="Home"
+			tabBarOptions={{
+				activeTintColor: '#e91e63',
+			}}>
+			<Tab.Screen name="Home" component={HomeScreen} />
+			<Tab.Screen name="Contact" component={ContactScreen} />
+			<Tab.Screen name="Form" component={SampleForm} />
+		</Tab.Navigator>
+	</View>
 );
 
 export default function App() {

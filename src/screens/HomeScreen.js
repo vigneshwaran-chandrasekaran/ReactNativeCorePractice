@@ -1,4 +1,3 @@
-import {SearchBar} from 'components';
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,7 +6,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const HomeScreen = () => {
 	return (
 		<View style={{flex: 1}}>
-			<SearchBar />
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<Text>Home Screen 12</Text>
 				<View style={{flexDirection: 'row', alignItems: 'center'}}>
