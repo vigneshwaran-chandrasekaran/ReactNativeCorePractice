@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import CustomInput from 'components/form/CustomInput';
 import {Field, Formik} from 'formik';
 import React from 'react';
@@ -76,8 +75,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const FormScreen = () => {
-	const navigation = useNavigation();
-
 	function handleFormSubmit(values) {
 		console.log('handleFormSubmit');
 		console.log(values);

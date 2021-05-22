@@ -1,4 +1,4 @@
-import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {DrawerActions, useNavigation, useRoute} from '@react-navigation/native';
 import React from 'react';
 import {Text, View} from 'react-native';
 import 'react-native-gesture-handler';
@@ -14,6 +14,10 @@ const SearchBarContainer = styled.View`
 
 const SearchBar = () => {
 	const navigation = useNavigation();
+	console.log('navigation', navigation);
+	const route = useRoute();
+	console.log(route);
+	console.log(route.name);
 
 	function goToNotifications() {
 		navigation.dispatch(DrawerActions.toggleDrawer());
@@ -32,7 +36,7 @@ const SearchBar = () => {
 					size={20}
 					onPress={goToNotifications}
 				/>
-				<Text>Page Title</Text>
+				<Text>Page Title {route.name}</Text>
 				<MaterialCommunityIcons
 					name="account"
 					color={'#000'}

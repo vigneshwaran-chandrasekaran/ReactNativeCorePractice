@@ -275,7 +275,6 @@ export default function App() {
 					showHideTransition={statusBarTransition}
 					hidden={hidden}
 				/>
-
 				<DrawerSection.Navigator
 					drawerContent={props => <DrawerContent {...props} />}>
 					<DrawerSection.Screen
