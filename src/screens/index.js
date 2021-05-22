@@ -1,3 +1,4 @@
+export {default as ContactScreen} from './ContactScreen';
 export {default as DatePickers} from './DatePickers';
 export {default as DeviceInfoScreen} from './DeviceInfoScreen';
 export {default as Dropdowns} from './Dropdowns';
