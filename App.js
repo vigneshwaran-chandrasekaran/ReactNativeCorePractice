@@ -22,7 +22,7 @@ import {
 	useTheme,
 } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {ContactScreen, HomeScreen} from 'screens';
+import {ContactScreen, HomeScreen, UiLibScreen} from 'screens';
 import styled from 'styled-components';
 
 const Container = styled.View`
@@ -248,6 +248,7 @@ const MainTabScreen = () => (
 			<Tab.Screen name="Home" component={HomeScreen} />
 			<Tab.Screen name="Contact" component={ContactScreen} />
 			<Tab.Screen name="Form" component={SampleForm} />
+			<Tab.Screen name="UI-LIB" component={UiLibScreen} />
 		</Tab.Navigator>
 	</View>
 );
