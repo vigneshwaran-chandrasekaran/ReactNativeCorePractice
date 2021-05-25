@@ -1,12 +1,16 @@
-// import tagIcon from 'assets/icons/tags.png';
 import dropdown from 'assets/icons/chevronDown.png';
+import tagIcon from 'assets/icons/tags.png';
 import _ from 'lodash';
 import React, {useState} from 'react';
-import {ScrollView} from 'react-native';
+import {Image, ScrollView} from 'react-native';
 import {
+	Assets,
+	Avatar,
 	Button,
 	Chip,
 	Colors,
+	Dialog,
+	PanningProvider,
 	Picker,
 	Spacings,
 	Text,
@@ -29,7 +33,7 @@ Typography.loadTypographies({
 });
 
 Spacings.loadSpacings({
-	// page: isSmallScreen ? 16 : 20,
+	// page: isSmallScden ? 16 : 20,
 });
 
 export const longOptions = [
@@ -64,10 +68,87 @@ const filters = [
 	{label: 'Scheduled', value: 3},
 ];
 
+const contactsData = [
+	{
+		name: 'rallylongmailname@wix.com',
+		text: 'Made a purchase in the total of 7.00$',
+		timestamp: '7/14/2016',
+		thumbnail:
+			'https://static.wixstatic.com/media/87994e3d0dda4479a7f4d8c803e1323e.jpg/v1/fit/w_750,h_750/87994e3d0dda4479a7f4d8c803e1323e.jpg',
+		leftTitleBadge: 'badgeOfficial',
+	},
+	{
+		name: 'Arnold Schwarzenegger',
+		text: 'Get to the chopper',
+		timestamp: 'Jul 19th 214',
+	},
+	{
+		name: 'Johnny Gibson',
+		text: 'Do you also carry these shoes in black?',
+		timestamp: '36 min',
+		count: '5',
+		thumbnail:
+			'https://static.wixstatic.com/media/87994e3d0dda4479a7f4d8c803e1323e.jpg/v1/fit/w_750,h_750/87994e3d0dda4479a7f4d8c803e1323e.jpg',
+		isNew: false,
+	},
+	{
+		name: 'Jennifer Clark',
+		text: 'This might be the subject\nAnd the content is on a new line',
+		timestamp: '2 hours',
+		count: '1',
+		thumbnail:
+			'https://static.wixstatic.com/media/c1ca83a468ae4c998fe4fddea60ea84d.jpg/v1/fit/w_750,h_750/c1ca83a468ae4c998fe4fddea60ea84d.jpg',
+		isNew: true,
+	},
+];
+
+const contacts = _.map(contactsData, c => ({
+	...c,
+	value: c.name,
+	label: c.name,
+}));
+
+const dialogHeader = props => {
+	const {title} = props;
+	return (
+		<Text margin-15 text60>
+			{title}
+		</Text>
+	);
+};
+
+const renderDialog = modalProps => {
+	const {visible, children, toggleModal, onDone} = modalProps;
+
+	return (
+		<Dialog
+			migrate
+			visible={visible}
+			onDismiss={() => {
+				onDone();
+				toggleModal(false);
+			}}
+			width="100%"
+			height="45%"
+			bottom
+			useSafeArea
+			containerStyle={{backgroundColor: Colors.white}}
+			renderPannableHeader={dialogHeader}
+			panDirection={PanningProvider.Directions.DOWN}
+			pannableHeaderProps={{title: 'Custom modal'}}>
+			<ScrollView>{children}</ScrollView>
+		</Dialog>
+	);
+};
+
 const UiLibScreen = () => {
 	const [language, setLanguage] = useState();
+	const [language2, setLanguage2] = useState(options[2].value);
 	const [languages, setLanguages] = useState([]);
 	const [nativePickerValue, setNativePickerValue] = useState('java');
+	const [filter, setFilter] = useState(filters[0]);
+	const [contact, setContact] = useState(contacts[0]);
+	const [customModalValues, setCustomModalValues] = useState([]);
 
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
@@ -163,7 +244,7 @@ const UiLibScreen = () => {
 					<Picker
 						title="Native Picker"
 						placeholder="Pick a Language"
-						useNativePicker
+						useNativePicker={true}
 						value={nativePickerValue}
 						onChange={e => setNativePickerValue(e)}
 						rightIconSource={dropdown}
@@ -188,6 +269,151 @@ const UiLibScreen = () => {
 							/>
 						))}
 					</Picker>
+
+					<Picker
+						marginT-20
+						title="Custom modal"
+						placeholder="Pick multiple Languages"
+						value={customModalValues}
+						onChange={e => setCustomModalValues(e)}
+						// mode={Picker.modes.MULTI}
+						rightIconSource={dropdown}
+						renderCustomModal={renderDialog}>
+						{_.map(options, option => (
+							<Picker.Item
+								key={option.value}
+								value={option}
+								label={option.label}
+								disabled={option.disabled}
+							/>
+						))}
+					</Picker>
+
+					<View marginB-30>
+						<Text marginT-20 marginB-10 text70 dark60>
+							Custom Picker:
+						</Text>
+						<Picker
+							value={filter}
+							onChange={e => setFilter(e)}
+							renderPicker={({label}) => {
+								return (
+									<View row center>
+										<Image
+											style={{
+												marginRight: 1,
+												height: 16,
+												resizeMode: 'contain',
+											}}
+											source={tagIcon}
+										/>
+										<Text dark10 text80>
+											{label} Posts
+										</Text>
+									</View>
+								);
+							}}>
+							{_.map(filters, objFilter => (
+								<Picker.Item
+									key={objFilter.value}
+									value={objFilter.value}
+									label={objFilter.label}
+								/>
+							))}
+						</Picker>
+					</View>
+
+					<View marginB-30>
+						<Text marginT-20 marginB-10 text70 dark60>
+							Custom Picker Items:
+						</Text>
+						<Picker
+							value={contact}
+							onChange={e => setContact(e)}
+							getItemValue={e => e.name}
+							renderPicker={e => {
+								return (
+									<View row center>
+										<Avatar
+											size={30}
+											source={{uri: e.thumbnail}}
+										/>
+										<Text text70 marginL-10>
+											{e.name}
+										</Text>
+									</View>
+								);
+							}}>
+							{_.map(contacts, e => (
+								<Picker.Item
+									key={e.name}
+									value={e}
+									renderItem={(item, props) => (
+										<View
+											style={{
+												height: 56,
+												borderBottomWidth: 1,
+												borderColor: Colors.dark80,
+											}}
+											paddingH-15
+											row
+											centerV
+											spread>
+											<View row centerV>
+												<Avatar
+													size={35}
+													source={{
+														uri: item.thumbnail,
+													}}
+												/>
+												<Text marginL-10 text70 dark10>
+													{item.name}
+												</Text>
+											</View>
+											{props.isSelected && (
+												<Image
+													source={Assets.icons.check}
+												/>
+											)}
+										</View>
+									)}
+									getItemLabel={item => item.name}
+								/>
+							))}
+						</Picker>
+					</View>
+
+					<View>
+						<Text text60 marginT-s5 marginB-s2>
+							Migrated Picker
+						</Text>
+
+						<Picker
+							migrate
+							title="Language"
+							placeholder="Favorite Language"
+							value={language2}
+							onChange={e => setLanguage2(e)}
+							topBarProps={{title: 'Languages'}}
+							showSearch
+							searchPlaceholder={'Search a language'}
+							searchStyle={{
+								color: Colors.blue30,
+								placeholderTextColor: Colors.dark50,
+							}}
+							// mode={Picker.modes.MULTI}
+							// useNativePicker
+						>
+							{_.map(options, e => (
+								<Picker.Item
+									key={e.value}
+									value={e.value}
+									label={e.label}
+									disabled={e.disabled}
+								/>
+							))}
+						</Picker>
+					</View>
 				</View>
 			</View>
 		</ScrollView>
