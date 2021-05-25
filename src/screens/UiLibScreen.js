@@ -1,3 +1,5 @@
+// import tagIcon from 'assets/icons/tags.png';
+import dropdown from 'assets/icons/chevronDown.png';
 import _ from 'lodash';
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
@@ -48,8 +50,24 @@ export const longOptions = [
 	{label: 'Ada5', value: 'Ada5'},
 ];
 
+const options = [
+	{label: 'JavaScript', value: 'js'},
+	{label: 'Java', value: 'java'},
+	{label: 'Python', value: 'python'},
+	{label: 'C++', value: 'c++', disabled: true},
+	{label: 'Perl', value: 'perl'},
+];
+const filters = [
+	{label: 'All', value: 0},
+	{label: 'Draft', value: 1},
+	{label: 'Published', value: 2},
+	{label: 'Scheduled', value: 3},
+];
+
 const UiLibScreen = () => {
 	const [language, setLanguage] = useState();
+	const [languages, setLanguages] = useState([]);
+	const [nativePickerValue, setNativePickerValue] = useState('java');
 
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
@@ -118,6 +136,54 @@ const UiLibScreen = () => {
 								key={option.value}
 								label={option.label}
 								value={option.value}
+								disabled={option.disabled}
+							/>
+						))}
+					</Picker>
+
+					<Picker
+						marginT-20
+						placeholder="Favorite Languages (up to 3)"
+						floatingPlaceholder
+						value={languages}
+						onChange={items => setLanguages(items)}
+						mode={Picker.modes.MULTI}
+						selectionLimit={3}
+						rightIconSource={dropdown}>
+						{_.map(options, opt => (
+							<Picker.Item
+								key={opt.value}
+								label={opt.label}
+								value={opt.value}
+								disabled={opt.disabled}
+							/>
+						))}
+					</Picker>
+
+					<Picker
+						title="Native Picker"
+						placeholder="Pick a Language"
+						useNativePicker
+						value={nativePickerValue}
+						onChange={e => setNativePickerValue(e)}
+						rightIconSource={dropdown}
+						containerStyle={{marginTop: 20}}
+						wheelPickerProps={{
+							style: {width: 200},
+							color: Colors.green30,
+							labelStyle: {
+								fontSize: 32,
+								fontFamily: 'sans-serif-condensed-light',
+							},
+							itemHeight: 55,
+						}}
+						selectLabelStyle={{color: Colors.green30}}
+						cancelLabelStyle={{color: Colors.green30}}>
+						{_.map(options, option => (
+							<Picker.Item
+								key={option.value}
+								value={option.value}
+								label={option.label}
 								disabled={option.disabled}
 							/>
 						))}
