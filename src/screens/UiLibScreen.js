@@ -12,6 +12,7 @@ import {
 	Dialog,
 	PanningProvider,
 	Picker,
+	RadioButton,
 	Spacings,
 	Text,
 	TextField,
@@ -102,6 +103,12 @@ const contactsData = [
 	},
 ];
 
+const COLORS = {
+	ORANGE: {name: 'Orange', color: Colors.orange20},
+	PURPLE: {name: 'Purple', color: Colors.purple20},
+	GREEN: {name: 'Green', color: Colors.green20},
+};
+
 const contacts = _.map(contactsData, c => ({
 	...c,
 	value: c.name,
@@ -150,6 +157,12 @@ const UiLibScreen = () => {
 	const [contact, setContact] = useState(contacts[0]);
 	const [customModalValues, setCustomModalValues] = useState([]);
 
+	const [state, setState] = useState({
+		color: undefined,
+		messageType: undefined,
+		disabledSelectedValue: true,
+	});
+
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
 			<View flex paddingH-25 paddingT-120>
@@ -197,11 +210,19 @@ const UiLibScreen = () => {
 				</View>
 
 				<View>
+					<RadioButton
+						label="India"
+						labelStyle={{color: 'green'}}
+						value="India"
+					/>
+				</View>
+
+				<View>
 					<Picker
 						placeholder="Favorite Language"
 						floatingPlaceholder
 						value={language}
-						enableModalBlur={false}
+						enableModalBlur={true}
 						onChange={item => setLanguage(item)}
 						topBarProps={{title: 'Languages'}}
 						style={{color: Colors?.red20}}
