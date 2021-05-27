@@ -54,6 +54,11 @@ const ListScreen = () => {
 				title="Native Base"
 				icon={<Icon name="home" size={15} color="white" />}
 			/>
+			<Button
+				onPress={() => navigation.navigate('ApiCall')}
+				title="Api call"
+				icon={<Icon name="home" size={15} color="white" />}
+			/>
 		</View>
 	);
 };
