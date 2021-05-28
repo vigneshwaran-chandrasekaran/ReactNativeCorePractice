@@ -2,6 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import 'react-native-gesture-handler';
 import {
+	AathicudiScreen,
 	ApiCallScreen,
 	DatePickers,
 	DeviceInfoScreen,
@@ -30,6 +31,7 @@ const SampleForm = () => {
 			<Stack.Screen name="DeviceInfo" component={DeviceInfoScreen} />
 			<Stack.Screen name="NativeBase" component={NativeBaseScreen} />
 			<Stack.Screen name="ApiCall" component={ApiCallScreen} />
+			<Stack.Screen name="Aathicudi" component={AathicudiScreen} />
 		</Stack.Navigator>
 	);
 };

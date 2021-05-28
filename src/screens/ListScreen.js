@@ -59,6 +59,10 @@ const ListScreen = () => {
 				title="Api call"
 				icon={<Icon name="home" size={15} color="white" />}
 			/>
+			<Button
+				onPress={() => navigation.navigate('Aathicudi')}
+				title="Aathicudi"
+			/>
 		</View>
 	);
 };
