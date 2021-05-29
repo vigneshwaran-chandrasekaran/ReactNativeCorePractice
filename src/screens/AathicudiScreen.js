@@ -1,70 +1,142 @@
 import aathicudi from 'data/aathicudi.json';
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Animated, Dimensions, StatusBar, Text, View} from 'react-native';
 import styled from 'styled-components';
+
+const {width, height} = Dimensions.get('screen');
+
+console.log('width', width);
+console.log('height', height);
 
 const Card = styled.View`
 	margin: 10px;
-	padding: 10px;
+	padding: 20px;
 	background-color: white;
 	border: 1px solid #ccc;
-	border-radius: 5px;
-	/* background-image: linear-gradient(red, yellow); */
-	/* background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%); */
+	border-radius: 10px;
 `;
 
 const Name = styled.Text`
 	font-weight: bold;
+	margin-bottom: 15px;
+	font-size: 16px;
 `;
 
-const Email = styled.Text`
-	color: blue;
+const Title = styled.Text`
+	margin-bottom: 5px;
+	padding-bottom: 3px;
+	font-size: 12px;
+	border-bottom-width: 1px;
+	border-bottom-color: #ccc;
+	color: #ff5d00;
 `;
 
 function EachWordDetails({data = ''}) {
-	console.log('data', data);
-
-	var names = data;
-	var nameArr = names.split(',');
-
-	console.log('nameArr', nameArr);
+	const names = data;
+	const nameArr = names.split(',');
 
 	return (
 		<View>
-			{nameArr.map(item => (
-				<Text>{item.trim()}</Text>
-			))}
+			<StatusBar hidden />
+			<Title>பதவுரை</Title>
+			<View style={{marginBottom: 15}}>
+				{nameArr.map(item => (
+					<Text>{item.trim()}</Text>
+				))}
+			</View>
 		</View>
 	);
 }
 
-const AathicudiScreen = () => {
-	console.log('aathicudi', aathicudi);
+function TamilTranslation({data = ''}) {
+	return (
+		<View style={{marginBottom: 15}}>
+			<Title>பொழிப்புரை</Title>
+			<Text>{data}</Text>
+		</View>
+	);
+}
 
-	let data = aathicudi?.athisudi;
-
-	console.log('data', data);
-
+function EnglishTranslation({data = ''}) {
 	return (
 		<View>
-			<Text>ஆத்தி சூடி</Text>
-			<ScrollView>
-				{data?.map((item, i) => (
+			<Title>English Translation</Title>
+			<Text>{data}</Text>
+		</View>
+	);
+}
+
+const ITEM_SIZE = 20;
+
+const AathicudiScreen = () => {
+	const scrollY = React.useRef(new Animated.Value(0)).current;
+	return (
+		<View style={{flex: 1, backgroundColor: '#fff'}}>
+			{/* <Text>ஆத்தி சூடி</Text> */}
+			{/* <ScrollView>
+				{aathicudi?.athisudi?.map((item, i) => (
 					<Card key={i}>
 						<Name>
 							{item?.number}. {item?.poem}
 						</Name>
 						<EachWordDetails data={item?.meaning} />
-						{/* <Text>{item?.meaning}</Text> */}
-						<Email>{item?.paraphrase}</Email>
-						<Text>{item?.translation}</Text>
+						<TamilTranslation data={item?.paraphrase} />
+						<EnglishTranslation data={item?.translation} />
 					</Card>
 				))}
-			</ScrollView>
+			</ScrollView> */}
+			<Animated.FlatList
+				data={aathicudi?.athisudi}
+				onScroll={Animated.event(
+					[{nativeEvent: {contentOffset: {y: scrollY}}}],
+					{useNativeDriver: true},
+				)}
+				keyExtractor={item => item?.number}
+				contentContainerStyle={{
+					padding: 20,
+					paddingTop: StatusBar.currentHeight,
+				}}
+				renderItem={({item, index}) => {
+					const inputRange = [
+						-1,
+						0,
+						ITEM_SIZE * index,
+						ITEM_SIZE * (index + 2),
+					];
+					const scale = scrollY.interpolate({
+						inputRange,
+						outputRange: [1, 1, 1, 0],
+					});
+					return (
+						<Animated.View
+							key={item?.number}
+							style={{
+								borderColor: 'red',
+								borderWidth: 1,
+								shadowColor: '#000',
+								shadowOffset: {
+									width: 4,
+									height: 4,
+								},
+								shadowOpacity: 1,
+								shadowRadius: 20,
+								// transform: [{scale}],
+							}}>
+							<Card key={item?.number}>
+								<Name>
+									{console.log('item?.number', item)}
+									{item?.number}. {item?.poem}
+								</Name>
+								<EachWordDetails data={item?.meaning} />
+								<TamilTranslation data={item?.paraphrase} />
+								<EnglishTranslation data={item?.translation} />
+							</Card>
+						</Animated.View>
+					);
+				}}
+			/>
 		</View>
 	);
 };
 
 export default AathicudiScreen;
-
-const styles = StyleSheet.create({});

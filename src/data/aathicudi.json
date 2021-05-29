@@ -95,7 +95,8 @@
       "poem": "அஃகஞ் சுருக்கேல்",
       "meaning": "அஃகம் - (நெல் முதலிய) தானியங்களை, சுருக்கேல் - குறைத்து விற்காதே",
       "paraphrase": "மிகுந்த இலாபத்துக்கு ஆசைப்பட்டுத் தானியங்களைக் குறைத்து விற்காதே",
-      "translation": "Never compromise in food grains"
+      "translation": "Never compromise in food grains",
+      "firstCharacter": "ஃ"
     },
     {
       "number": 14,
@@ -130,19 +131,21 @@
       "poem": "இடம்பட வீடெடேல்",
       "meaning": "இடம்பட - விசாலமாக, வீடு - வீட்டை, எடேல் - கட்டாதே",
       "paraphrase": "அளவுக்குமேல் இடம் வீணாய்க் கிடககும்படி வீட்டைப்பெரிதாகக் கட்டாதே ''சிறுகக் கட்டிப் பெருக வாழ்'' என்பது பழமொழி.",
-      "translation": "Judiciously space your home."
+      "translation": "Judiciously space your home.",
+      "firstCharacter": "ட"
     },
     {
       "number": 19,
       "poem": "இணக்கமறிந் திணங்கு",
       "meaning": "இணக்கம் - (நட்புக்கு ஏதுவாகிய) நற்குண நற்செய்கைகளை, அறிந்து - ஆராய்ந்தறிந்து, இணங்கு - (பின் ஒருவரோடு) நண்பு கொள்",
       "paraphrase": "நற்குண நற்செய்கை உடையவ ரென்பது தெரிந்து கொண்டு ஒருவரோடு நட்புச் செய",
-      "translation": "Befriend the best."
+      "translation": "Befriend the best.",
+      "firstCharacter": "ண"
     },
     {
       "number": 20,
       "poem": "தந்தைதாய்ப் பேண்",
-      "meaning": "தந்தை - பிதாவையும், தாய்-மாதாவையும், பேண் - காப்பாற்று",
+      "meaning": "தந்தை - பிதாவையும், தாய் - மாதாவையும், பேண் - காப்பாற்று",
       "paraphrase": "உன் தாய் தந்தையரை அன்புடன் போற்றிக் காப்பாற்று",
       "translation": "Protect your parents."
     },
@@ -156,7 +159,7 @@
     {
       "number": 22,
       "poem": "பருவத்தே பயிர்செய்",
-      "meaning": "பருவத்தே - தக்க காலத்திலே, பயிர்செய்-பயிரிடு",
+      "meaning": "பருவத்தே - தக்க காலத்திலே, பயிர்செய் - பயிரிடு",
       "paraphrase": "விளையும் பருவமறிந்து பயிரிடு  எச்செயலும் அதற்குரிய காலத்திலே செய்யப்படவேண்டும்.",
       "translation": "Husbandry has its season."
     },
@@ -172,21 +175,24 @@
       "poem": "இயல்பலா தனசெயேல்",
       "meaning": "இயல்பு அலாதன - இயற்கைக்கு மாறான செயல்களை, செயேல் - செய்யாதே",
       "paraphrase": "நல்லொழுக்கத்திற்கு மாறான செயல்களைச் செய்யாதே",
-      "translation": "Desist demeaning deeds."
+      "translation": "Desist demeaning deeds.",
+      "firstCharacter": "ய"
     },
     {
       "number": 25,
       "poem": "அரவ மாட்டேல்",
       "meaning": "அரவம் - (நஞ்சுடைய) பாம்புகளை, ஆட்டேல் - பிடித்து ஆட்டாதே",
       "paraphrase": "பாம்பைப் பிடித்து ஆட்டி விளையாடாதே",
-      "translation": "Don't play with snakes."
+      "translation": "Don't play with snakes.",
+      "firstCharacter": "ர"
     },
     {
       "number": 26,
       "poem": "இலவம்பஞ்சிற் றுயில்",
       "meaning": "இலவம்பஞ்சில் - இலவம்பஞ்சு மெத்தையிலே, துயில் - உறங்கு",
       "paraphrase": "இலவம்பஞ்சினாற் செய்த மெத்தையிலே படுத்து உறங்கு",
-      "translation": "Cotton bed better for comfort."
+      "translation": "Cotton bed better for comfort.",
+      "firstCharacter": "ல"
     },
     {
       "number": 27,
@@ -200,28 +206,32 @@
       "poem": "அழகலா தனசெயேல்",
       "meaning": "அழகு அலாதன - சிறப்பில்லாத செயல்களை, செயேல் - செய்யாதே",
       "paraphrase": "இழிவான செயல்களைச் செய்யாதே",
-      "translation": "Detest the disorderly."
+      "translation": "Detest the disorderly.",
+      "firstCharacter": "ழ"
     },
     {
       "number": 29,
       "poem": "இளமையிற் கல்",
       "meaning": "இளமையில் - இளமைப் பருவத்திலே, கல் - கல்வியைக் கற்றுக்கொள்",
       "paraphrase": "இளமைப் பருவத்திலேயே படிக்கத்தொடங்கிக் கல்வியைக் கற்றுக்கொள்",
-      "translation": "Learn when young."
+      "translation": "Learn when young.",
+      "firstCharacter": "ள"
     },
     {
       "number": 30,
       "poem": "அறனை மறவேல்",
       "meaning": "அறனை - தருமத்தை, மறவேல் - (ஒருபோதும்) மறவாதே",
       "paraphrase": "தருமத்தை எப்பொழுதும் மறவாமல் செய்",
-      "translation": "Cherish charity."
+      "translation": "Cherish charity.",
+      "firstCharacter": "ற"
     },
     {
       "number": 31,
       "poem": "அனந்த லாடேல்",
       "meaning": "அனந்தல் - தூக்கத்தை, ஆடேல் - மிகுதியாகக் கொள்ளாதே",
       "paraphrase": "மிகுதியாகத் தூங்காதே",
-      "translation": "Over sleeping is obnoxious."
+      "translation": "Over sleeping is obnoxious.",
+      "firstCharacter": "ன"
     },
     {
       "number": 32,
@@ -235,77 +245,88 @@
       "poem": "காப்பது விரதம்",
       "meaning": "காப்பது - (உயிர்களுக்குத் தீங்கு செய்யாமல் அவற்றைக்) காப்பாற்றுவதே, விரதம் - நோன்பாகும்",
       "paraphrase": "பிற உயிர்களுக்குத் துன்பஞ் செய்யாமல் (அவற்றைக்) காப்பாற்றுவதே தவமாகும் தான் செய்யத் தொடங்கிய தருமத்தை விடாமற் செய்வதே விரதம் என்றும் பொருள் சொல்லலாம்.",
-      "translation": "Protecting is Fasting"
+      "translation": "Protecting is Fasting",
+      "firstCharacter": "கா"
     },
     {
       "number": 34,
       "poem": "கிழமைப் படவாழ்",
       "meaning": "கிழமைப்பட - (உன்உடலும் பொருளும் பிறருக்கு) உரிமைப்படும்படி, வாழ் - வாழு",
       "paraphrase": "உன் உடம்பாலும் பொருளாலும் பிறருக்கு நன்மை செய்து வாழு",
-      "translation": "Live according to days."
+      "translation": "Live according to days.",
+      "firstCharacter": "கி"
     },
     {
       "number": 35,
       "poem": "கீழ்மை யகற்று",
       "meaning": "கீழ்மை - இழிவானவற்றை, அகற்று - நீக்கு",
       "paraphrase": "இழிவான குணஞ் செயல்களை நீக்கு",
-      "translation": "Remove Poverty."
+      "translation": "Remove Poverty.",
+      "firstCharacter": "கீ"
     },
     {
       "number": 36,
       "poem": "குணமது கைவிடேல்",
       "meaning": "குணமது - (மேலாகிய) குணத்தை, கைவிடேல் - கைவிடாதே",
       "paraphrase": "நற்குணங்களைக் கைசோரவிடாதே நன்மை தருவ தென்று கண்டறிந்ததைக் கைவிடாதே. அது: பகுதிப்பொருள் விகுதி.",
-      "translation": "Don't lose character."
+      "translation": "Don't lose character.",
+      "firstCharacter": "கு"
     },
     {
       "number": 37,
       "poem": "கூடிப் பிரியேல்",
       "meaning": "கூடி - (நல்லவரோடு) நட்புக்கொண்டு, பிரியேல் - பின் (அவரைவிட்டு) நீங்காதே",
       "paraphrase": "நல்லவரோடு நட்புச் செய்து பின்பு அவரை விட்டுப் பிரியாதே",
-      "translation": "Don't forsake friends."
+      "translation": "Don't forsake friends.",
+      "firstCharacter": "கூ"
     },
     {
       "number": 38,
       "poem": "கெடுப்ப தொழி",
       "meaning": "கெடுப்பது - பிறருக்குக் கேடு செய்வதை, ஒழி - விட்டு விடு",
       "paraphrase": "பிறருக்குக் கெடுதி செய்வதை விட்டுவிடு (கேடு விளைக்கும் காரியத்தைச் செய்யாதே)",
-      "translation": "Abandon animosity."
+      "translation": "Abandon animosity.",
+      "firstCharacter": "கெ"
     },
     {
       "number": 39,
       "poem": "கேள்வி முயல்",
       "meaning": "கேள்வி - கற்றவர் சொல்லும் நூற் பொருளைக் கேட்ப தற்கு; முயல் - முயற்சி செய்",
       "paraphrase": "கற்றறிந்தவர்கள் சொல்லும் நூற் பொருளைக்கேட்க முயற்சி செய்",
-      "translation": "Learn by questioning."
+      "translation": "Learn by questioning.",
+      "firstCharacter": "கே"
     },
     {
       "number": 40,
       "poem": "கைவினை கரவேல்",
       "meaning": "கைவினை - (உனக்குத் தெரிந்த) கைத் தொழிலை, கரவேல் - ஒளியாதே",
       "paraphrase": "உனக்குத் தெரிந்த கைத்தொழிலை மற்றவர்களுக்கு ஒளியாமற் செய்(ஏதேனும் கைத்தொழில் செய்துகொண்டிரு.)",
-      "translation": "Learn handicraft."
+      "translation": "Learn handicraft.",
+      "firstCharacter": "கை"
     },
     {
       "number": 41,
       "poem": "கொள்ளை விரும்பேல்",
       "meaning": "கொள்ளை - (பிறருடைய பொருளைக்) கொள்ளையிடுதற்கு, விரும்பேல் - ஆசைப்படாதே",
       "paraphrase": "பிறர் பொருளைக் கவர்ந்துகொள்ள விரும்பாதே",
-      "translation": "Don't swindle."
+      "translation": "Don't swindle.",
+      "firstCharacter": "கொ"
     },
     {
       "number": 42,
       "poem": "கோதாட் டொழி",
       "meaning": "கோது - குற்றம் பொருந்திய, ஆட்டு - விளையாட்டை, ஒழி - நீக்கு",
       "paraphrase": "குற்றமான விளையாட்டை விட்டுவிடுகோதாட்டொழி என்பதன்பின் 'கௌவை யகற்று, என்று ஒரு கட்டுரை சில புத்தகங்களில் உள்ளது. 'துன்பத்தை நீக்கு' என்பது இதன் பொருள்.",
-      "translation": "Ban all illegal games."
+      "translation": "Ban all illegal games.",
+      "firstCharacter": "கோ"
     },
     {
+      "number": 43,
       "poem": "கெளவை அகற்று",
       "meaning": "கெளவை - துன்பம், அகற்று - இல்லாமல் செய்தல்",
       "paraphrase": "துன்பம் இல்லாமல் செய்தல்",
       "translation": "Don't vilify.",
-      "number": 43
+      "firstCharacter": "கெள"
     },
     {
       "number": 44,
