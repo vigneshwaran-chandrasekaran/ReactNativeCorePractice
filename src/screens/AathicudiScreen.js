@@ -40,8 +40,8 @@ function EachWordDetails({data = ''}) {
 			<StatusBar hidden />
 			<Title>பதவுரை</Title>
 			<View style={{marginBottom: 15}}>
-				{nameArr.map(item => (
-					<Text>{item.trim()}</Text>
+				{nameArr.map((item, i) => (
+					<Text key={i}>{item.trim()}</Text>
 				))}
 			</View>
 		</View>

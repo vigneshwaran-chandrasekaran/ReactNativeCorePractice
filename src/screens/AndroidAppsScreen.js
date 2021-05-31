@@ -1,7 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+    ActivityIndicator,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View
+} from 'react-native';
 import RNAndroidInstalledApps from 'react-native-android-installed-apps-categories';
-import {TabBar} from 'react-native-ui-lib';
+import { TabBar } from 'react-native-ui-lib';
 import styled from 'styled-components';
 
 const Card = styled.View`
@@ -19,6 +26,14 @@ const Card = styled.View`
 const AppName = styled.Text`
 	font-weight: bold;
 	font-size: 16px;
+`;
+
+const LoadingSection = styled.View`
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 `;
 
 function AppInfoCard({item}) {
@@ -39,10 +54,13 @@ function AppInfoCard({item}) {
 					flexShrink: 1,
 				}}>
 				<AppName>{item?.appName}</AppName>
+				{item?.category && item?.category !== 'N/A' && (
+					<Text>Category: {item?.category}</Text>
+				)}
 				{item?.appName !== item?.packageName && (
 					<Text>{item?.packageName}</Text>
 				)}
-				<Text>{new Date(item?.firstInstallTime).toUTCString()}</Text>
+				<Text>{new Date(item?.firstInstallTime).toLocaleString()}</Text>
 				{/* <Text>
 									{new Date(
 										item?.lastUpdateTime,
@@ -58,6 +76,7 @@ const AndroidAppsScreen = () => {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [allApps, setAllApps] = useState([]);
 	const [drawerAppsCats, setDrawerAppsCats] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		RNAndroidInstalledApps.getApps()
@@ -67,6 +86,9 @@ const AndroidAppsScreen = () => {
 			})
 			.catch(error => {
 				alert(error);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 
 		// RNAndroidInstalledApps.getNonSystemApps()
@@ -108,11 +130,13 @@ const AndroidAppsScreen = () => {
 			})
 			.catch(error => {
 				alert(error);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}, []);
 	return (
 		<View>
-			<Text>AndroidApps</Text>
 			<TabBar
 				style={styles.tabbar}
 				selectedIndex={0}
@@ -121,6 +145,13 @@ const AndroidAppsScreen = () => {
 				<TabBar.Item label="All Apps" />
 				<TabBar.Item label="User Installed Apps" />
 			</TabBar>
+
+			{loading && (
+				<LoadingSection>
+					<ActivityIndicator size="large" color="#0000ff" />
+					<Text>Getting you app information...</Text>
+				</LoadingSection>
+			)}
 
 			{selectedIndex === 0 && (
 				<ScrollView>
