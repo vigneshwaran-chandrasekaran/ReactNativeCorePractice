@@ -67,6 +67,10 @@ const ListScreen = () => {
 				onPress={() => navigation.navigate('AndroidApps')}
 				title="Android apps"
 			/>
+			<Button
+				onPress={() => navigation.navigate('RssFeed')}
+				title="Rss Feed"
+			/>
 		</View>
 	);
 };
