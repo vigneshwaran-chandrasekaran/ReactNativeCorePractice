@@ -1,4 +1,6 @@
 rootProject.name = 'ReactNativeCorePractice'
+include ':react-native-webview'
+project(':react-native-webview').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-webview/android')
 include ':react-native-android-installed-apps-categories'
 project(':react-native-android-installed-apps-categories').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-installed-apps-categories/android')
 include ':react-native-android-installed-apps-categories'

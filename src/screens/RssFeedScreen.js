@@ -1,22 +1,73 @@
-import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Linking, ScrollView, Text, View} from 'react-native';
 import * as rssParser from 'react-native-rss-parser';
+import {WebView} from 'react-native-webview';
+import styled from 'styled-components';
+
+const Card = styled.TouchableOpacity`
+	margin: 10px;
+	padding: 20px;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+`;
+
+const Title = styled.Text`
+	font-weight: bold;
+	margin-bottom: 10px;
+	padding-bottom: 3px;
+	font-size: 14px;
+	border-bottom-width: 1px;
+	border-bottom-color: #ccc;
+	color: #ff5d00;
+`;
+
+const Description = styled.Text`
+	font-size: 14px;
+`;
 
 const RssFeedScreen = () => {
+	const [feeds, setFeeds] = useState([]);
 	useEffect(() => {
-		fetch('http://www.nasa.gov/rss/dyn/breaking_news.rss')
+		// http://feeds.feedburner.com/Hindu_Tamil_technology
+		// http://www.nasa.gov/rss/dyn/breaking_news.rss
+		fetch('http://feeds.feedburner.com/Hindu_Tamil_technology')
 			.then(response => response.text())
 			.then(async responseData => {
-				const rss = await rssParser.parse(responseData);
 				console.log(responseData);
+				const rss = await rssParser.parse(responseData);
+				setFeeds(rss?.items);
 				console.log(rss);
 				console.log(rss.title);
 				console.log(rss.items.length);
 			});
 	}, []);
+
+	function openLink(data) {
+		console.log('openLink data', data);
+		Linking.openURL(data?.id).catch(err => {
+			alert('Failed to open page');
+			console.error("Couldn't load page", err);
+		});
+	}
+
 	return (
 		<View>
-			<Text>RssFeedScreen</Text>
+			<Text>one is one</Text>
+			<WebView source={{uri: 'https://reactnative.dev/'}} />
+			<WebView
+				originWhitelist={['*']}
+				source={{html: '<p>Here I am</p>'}}
+			/>
+			<Text>two is two</Text>
+			<ScrollView>
+				{feeds?.map((item, i) => (
+					<Card key={i} onPress={() => openLink(item)}>
+						<Title>{item?.title}</Title>
+						<Description>{item?.description}</Description>
+					</Card>
+				))}
+			</ScrollView>
 		</View>
 	);
 };
