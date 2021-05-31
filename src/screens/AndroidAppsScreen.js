@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
-    ActivityIndicator,
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View
+	ActivityIndicator,
+	Button,
+	Image,
+	Linking,
+	ScrollView,
+	StyleSheet,
+	Text,
+	View,
 } from 'react-native';
 import RNAndroidInstalledApps from 'react-native-android-installed-apps-categories';
-import { TabBar } from 'react-native-ui-lib';
+import {TabBar} from 'react-native-ui-lib';
 import styled from 'styled-components';
 
 const Card = styled.View`
@@ -78,6 +80,13 @@ const AndroidAppsScreen = () => {
 	const [drawerAppsCats, setDrawerAppsCats] = useState([]);
 	const [loading, setLoading] = useState(true);
 
+	console.log('Linking', Linking);
+	console.log('Linking', Linking.getInitialURL());
+
+	Linking.getInitialURL().then(url => {
+		console.log('url', url);
+	});
+
 	useEffect(() => {
 		RNAndroidInstalledApps.getApps()
 			.then(apps => {
@@ -135,6 +144,15 @@ const AndroidAppsScreen = () => {
 				setLoading(false);
 			});
 	}, []);
+
+	function goToSettings() {
+		// Linking.openURL('tel:1234567890');
+		// Linking.openURL('geo:37.484847,-122.148386');
+		// Linking.openURL('sms:+123456789');
+		// Linking.openURL('mailto: support@expo.io');
+		Linking.openSettings();
+	}
+
 	return (
 		<View>
 			<TabBar
@@ -142,9 +160,16 @@ const AndroidAppsScreen = () => {
 				selectedIndex={0}
 				enableShadow
 				onChangeIndex={index => setSelectedIndex(index)}>
-				<TabBar.Item label="All Apps" />
+				<TabBar.Item label="System Apps" />
 				<TabBar.Item label="User Installed Apps" />
 			</TabBar>
+
+			<Button
+				onPress={goToSettings}
+				title="Go to settings"
+				color="#841584"
+				accessibilityLabel="Learn more about this purple button"
+			/>
 
 			{loading && (
 				<LoadingSection>
