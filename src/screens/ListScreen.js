@@ -63,6 +63,10 @@ const ListScreen = () => {
 				onPress={() => navigation.navigate('Aathicudi')}
 				title="Aathicudi"
 			/>
+			<Button
+				onPress={() => navigation.navigate('AndroidApps')}
+				title="Android apps"
+			/>
 		</View>
 	);
 };

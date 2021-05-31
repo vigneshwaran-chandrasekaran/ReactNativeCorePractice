@@ -1,3 +1,7 @@
 rootProject.name = 'ReactNativeCorePractice'
+include ':react-native-android-installed-apps-categories'
+project(':react-native-android-installed-apps-categories').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-installed-apps-categories/android')
+include ':react-native-android-installed-apps-categories'
+project(':react-native-android-installed-apps-categories').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-installed-apps-categories/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'

@@ -3,6 +3,7 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {
 	AathicudiScreen,
+	AndroidAppsScreen,
 	ApiCallScreen,
 	DatePickers,
 	DeviceInfoScreen,
@@ -32,6 +33,7 @@ const SampleForm = () => {
 			<Stack.Screen name="NativeBase" component={NativeBaseScreen} />
 			<Stack.Screen name="ApiCall" component={ApiCallScreen} />
 			<Stack.Screen name="Aathicudi" component={AathicudiScreen} />
+			<Stack.Screen name="AndroidApps" component={AndroidAppsScreen} />
 		</Stack.Navigator>
 	);
 };
