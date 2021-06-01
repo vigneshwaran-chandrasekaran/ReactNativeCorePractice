@@ -12,6 +12,7 @@ import {
 	ListScreen,
 	NativeBaseScreen,
 	RssFeedScreen,
+	WebViewScreen,
 } from 'screens';
 
 // https://blog.logrocket.com/react-native-form-validations-with-formik-and-yup/
@@ -36,6 +37,7 @@ const SampleForm = () => {
 			<Stack.Screen name="Aathicudi" component={AathicudiScreen} />
 			<Stack.Screen name="AndroidApps" component={AndroidAppsScreen} />
 			<Stack.Screen name="RssFeed" component={RssFeedScreen} />
+			<Stack.Screen name="WebView" component={WebViewScreen} />
 		</Stack.Navigator>
 	);
 };

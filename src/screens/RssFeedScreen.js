@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {Linking, ScrollView, Text, View} from 'react-native';
+import {
+	Dimensions,
+	Linking,
+	ScrollView,
+	StyleSheet,
+	Text,
+	View,
+} from 'react-native';
 import * as rssParser from 'react-native-rss-parser';
 import {WebView} from 'react-native-webview';
 import styled from 'styled-components';
@@ -52,13 +59,33 @@ const RssFeedScreen = () => {
 	}
 
 	return (
-		<View>
+		<ScrollView>
 			<Text>one is one</Text>
-			<WebView source={{uri: 'https://reactnative.dev/'}} />
-			<WebView
-				originWhitelist={['*']}
-				source={{html: '<p>Here I am</p>'}}
-			/>
+			<View style={styles.container}>
+				{/* <WebView source={{uri: 'https://reactnative.dev/'}} /> */}
+
+				<WebView
+					source={{
+						uri: 'https://www.yahoo.com',
+					}}
+					startInLoadingState={true}
+					scalesPageToFit={true}
+					style={{
+						height: Dimensions.get('window').height,
+						width: Dimensions.get('window').width,
+					}}
+				/>
+				{/* <WebView source={{html: '<p>Here I am</p>'}} />
+				<WebView
+					source={{html: '<p>Here I am</p>'}}
+					scalesPageToFit={true}
+				/>
+				<WebView
+					source={{uri: 'https://infinite.red'}}
+					style={{marginTop: 20}}
+				/> */}
+			</View>
+
 			<Text>two is two</Text>
 			<ScrollView>
 				{feeds?.map((item, i) => (
@@ -68,8 +95,16 @@ const RssFeedScreen = () => {
 					</Card>
 				))}
 			</ScrollView>
-		</View>
+		</ScrollView>
 	);
 };
 
 export default RssFeedScreen;
+
+const styles = StyleSheet.create({
+	container: {
+		height: Dimensions.get('window').height,
+		width: Dimensions.get('window').width,
+		backgroundColor: 'pink',
+	},
+});
