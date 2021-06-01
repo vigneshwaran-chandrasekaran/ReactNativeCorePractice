@@ -5,6 +5,7 @@ import {
 	AathicudiScreen,
 	AndroidAppsScreen,
 	ApiCallScreen,
+	AsyncStorageScreen,
 	DatePickers,
 	DeviceInfoScreen,
 	Dropdowns,
@@ -38,6 +39,10 @@ const SampleForm = () => {
 			<Stack.Screen name="AndroidApps" component={AndroidAppsScreen} />
 			<Stack.Screen name="RssFeed" component={RssFeedScreen} />
 			<Stack.Screen name="WebView" component={WebViewScreen} />
+			<Stack.Screen
+				name="AsyncStorageScreen"
+				component={AsyncStorageScreen}
+			/>
 		</Stack.Navigator>
 	);
 };

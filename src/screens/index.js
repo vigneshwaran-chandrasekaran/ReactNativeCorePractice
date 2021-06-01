@@ -1,6 +1,7 @@
 export {default as AathicudiScreen} from './AathicudiScreen';
 export {default as AndroidAppsScreen} from './AndroidAppsScreen';
 export {default as ApiCallScreen} from './ApiCallScreen';
+export {default as AsyncStorageScreen} from './AsyncStorageScreen';
 export {default as ContactScreen} from './ContactScreen';
 export {default as DatePickers} from './DatePickers';
 export {default as DeviceInfoScreen} from './DeviceInfoScreen';

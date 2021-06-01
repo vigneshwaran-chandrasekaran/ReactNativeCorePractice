@@ -75,6 +75,10 @@ const ListScreen = () => {
 				onPress={() => navigation.navigate('WebView')}
 				title="Web View"
 			/>
+			<Button
+				onPress={() => navigation.navigate('AsyncStorageScreen')}
+				title="Async Storage "
+			/>
 		</View>
 	);
 };
