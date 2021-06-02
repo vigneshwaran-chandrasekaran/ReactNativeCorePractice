@@ -80,17 +80,10 @@ const AndroidAppsScreen = () => {
 	const [drawerAppsCats, setDrawerAppsCats] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	console.log('Linking', Linking);
-	console.log('Linking', Linking.getInitialURL());
-
-	Linking.getInitialURL().then(url => {
-		console.log('url', url);
-	});
-
 	useEffect(() => {
 		RNAndroidInstalledApps.getApps()
 			.then(apps => {
-				console.log('getApps', apps);
+				console.log('getApps 123', apps);
 				setAllApps(apps);
 			})
 			.catch(error => {
