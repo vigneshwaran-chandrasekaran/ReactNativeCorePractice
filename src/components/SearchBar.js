@@ -1,6 +1,6 @@
-import {DrawerActions, useNavigation, useRoute} from '@react-navigation/native';
+import { DrawerActions, useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
-import {Text, View} from 'react-native';
+import { Text, View } from 'react-native';
 import 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styled from 'styled-components';
@@ -14,10 +14,7 @@ const SearchBarContainer = styled.View`
 
 const SearchBar = () => {
 	const navigation = useNavigation();
-	console.log('navigation', navigation);
 	const route = useRoute();
-	console.log(route);
-	console.log(route.name);
 
 	function goToNotifications() {
 		navigation.dispatch(DrawerActions.toggleDrawer());

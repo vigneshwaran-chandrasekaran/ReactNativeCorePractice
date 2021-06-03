@@ -129,7 +129,7 @@ export function DrawerContent(props) {
 						<DrawerItem
 							icon={({color, size}) => (
 								<Ionicons
-									name="account-outline"
+									name="bookmark-outline"
 									color={color}
 									size={size}
 								/>

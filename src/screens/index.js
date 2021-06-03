@@ -11,5 +11,6 @@ export {default as HomeScreen} from './HomeScreen';
 export {default as ListScreen} from './ListScreen';
 export {default as NativeBaseScreen} from './NativeBaseScreen';
 export {default as RssFeedScreen} from './RssFeedScreen';
+export {default as SensorsScreen} from './SensorsScreen';
 export {default as UiLibScreen} from './UiLibScreen';
 export {default as WebViewScreen} from './WebViewScreen';

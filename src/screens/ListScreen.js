@@ -76,6 +76,10 @@ const ListScreen = () => {
 				onPress={() => navigation.navigate('AsyncStorageScreen')}
 				title="Async Storage "
 			/>
+			<Button
+				onPress={() => navigation.navigate('Sensors')}
+				title="Sensors"
+			/>
 		</ScrollView>
 	);
 };

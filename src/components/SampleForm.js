@@ -13,6 +13,7 @@ import {
 	ListScreen,
 	NativeBaseScreen,
 	RssFeedScreen,
+	SensorsScreen,
 	WebViewScreen,
 } from 'screens';
 
@@ -43,6 +44,7 @@ const SampleForm = () => {
 				name="AsyncStorageScreen"
 				component={AsyncStorageScreen}
 			/>
+			<Stack.Screen name="Sensors" component={SensorsScreen} />
 		</Stack.Navigator>
 	);
 };
